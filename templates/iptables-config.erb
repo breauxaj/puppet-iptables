@@ -5,8 +5,8 @@
 # Space separated list of nat helpers (e.g. 'ip_nat_ftp ip_nat_irc'), which
 # are loaded after the firewall rules are applied. Options for the helpers are
 # stored in /etc/modprobe.conf.
-<% if @modules and ! @modules.empty? -%>
-IPTABLES_MODULES="<% [@modules].each do |m| -%><%= m %> <% end -%>"
+<% if modules and ! modules.empty? -%>
+IPTABLES_MODULES="<% modules.each do |m| -%><%= m %> <% end -%>"
 <% else -%>
 IPTABLES_MODULES=""
 <% end -%>
@@ -16,8 +16,8 @@ IPTABLES_MODULES=""
 # This option has to be 'yes' to get to a sane state for a firewall
 # restart or stop. Only set to 'no' if there are problems unloading netfilter
 # modules.
-<% if @modules_unload and ! @modules_unload.empty? -%>
-IPTABLES_MODULES_UNLOAD="<%= @modules_unload %>"
+<% if modules_unload and ! modules_unload.empty? -%>
+IPTABLES_MODULES_UNLOAD="<%= modules_unload %>"
 <% else -%>
 IPTABLES_MODULES_UNLOAD="yes"
 <% end -%>
@@ -26,8 +26,8 @@ IPTABLES_MODULES_UNLOAD="yes"
 #   Value: yes|no,  default: no
 # Saves all firewall rules to /etc/sysconfig/iptables if firewall gets stopped
 # (e.g. on system shutdown).
-<% if @save_on_stop and ! @save_on_stop.empty? -%>
-IPTABLES_SAVE_ON_STOP="<%= @save_on_stop %>"
+<% if save_on_stop and ! save_on_stop.empty? -%>
+IPTABLES_SAVE_ON_STOP="<%= save_on_stop %>"
 <% else -%>
 IPTABLES_SAVE_ON_STOP="no"
 <% end -%>
@@ -36,8 +36,8 @@ IPTABLES_SAVE_ON_STOP="no"
 #   Value: yes|no,  default: no
 # Saves all firewall rules to /etc/sysconfig/iptables if firewall gets
 # restarted.
-<% if @save_on_restart and ! @save_on_restart.empty? -%>
-IPTABLES_SAVE_ON_RESTART="<%= @save_on_restart %>"
+<% if save_on_restart and ! save_on_restart.empty? -%>
+IPTABLES_SAVE_ON_RESTART="<%= save_on_restart %>"
 <% else -%>
 IPTABLES_SAVE_ON_RESTART="no"
 <% end -%>
@@ -47,8 +47,8 @@ IPTABLES_SAVE_ON_RESTART="no"
 # Save counters for rules and chains to /etc/sysconfig/iptables if
 # 'service iptables save' is called or on stop or restart if SAVE_ON_STOP or
 # SAVE_ON_RESTART is enabled.
-<% if @save_counter and ! @save_counter.empty? -%>
-IPTABLES_SAVE_COUNTER="<%= @save_counter %>"
+<% if save_counter and ! save_counter.empty? -%>
+IPTABLES_SAVE_COUNTER="<%= save_counter %>"
 <% else -%>
 IPTABLES_SAVE_COUNTER="no"
 <% end -%>
@@ -56,8 +56,8 @@ IPTABLES_SAVE_COUNTER="no"
 # Numeric status output
 #   Value: yes|no,  default: yes
 # Print IP addresses and port numbers in numeric format in the status output.
-<% if @status_numeric and ! @status_numeric.empty? -%>
-IPTABLES_STATUS_NUMERIC="<%= @status_numeric %>"
+<% if status_numeric and ! status_numeric.empty? -%>
+IPTABLES_STATUS_NUMERIC="<%= status_numeric %>"
 <% else -%>
 IPTABLES_STATUS_NUMERIC="yes"
 <% end -%>
@@ -66,8 +66,8 @@ IPTABLES_STATUS_NUMERIC="yes"
 #   Value: yes|no,  default: yes
 # Print info about the number of packets and bytes plus the "input-" and
 # "outputdevice" in the status output.
-<% if @status_verbose and ! @status_verbose.empty? -%>
-IPTABLES_STATUS_VERBOSE="<%= @status_verbose %>"
+<% if status_verbose and ! status_verbose.empty? -%>
+IPTABLES_STATUS_VERBOSE="<%= status_verbose %>"
 <% else -%>
 IPTABLES_STATUS_VERBOSE="no"
 <% end -%>
@@ -75,8 +75,8 @@ IPTABLES_STATUS_VERBOSE="no"
 # Status output with numbered lines
 #   Value: yes|no,  default: yes
 # Print a counter/number for every rule in the status output.
-<% if @status_linenumbers and ! @status_linenumbers.empty? -%>
-IPTABLES_STATUS_LINENUMBERS="<%= @status_linenumbers %>"
+<% if status_linenumbers and ! status_linenumbers.empty? -%>
+IPTABLES_STATUS_LINENUMBERS="<%= status_linenumbers %>"
 <% else -%>
 IPTABLES_STATUS_LINENUMBERS="yes"
 <% end -%>
@@ -85,8 +85,8 @@ IPTABLES_STATUS_LINENUMBERS="yes"
 #   Default: -none-
 # Space separated list of sysctl items which are to be reloaded on start.
 # List items will be matched by fgrep.
-<% if @sysctl_load_list and ! @sysctl_load_list.empty? -%>
-IPTABLES_SYSCTL_LOAD_LIST="<% [@sysctl_load_list].each do |s| -%><%= s %> <% end -%>"
+<% if sysctl_load_list and ! sysctl_load_list.empty? -%>
+IPTABLES_SYSCTL_LOAD_LIST="<% sysctl_load_list.each do |s| -%><%= s %> <% end -%>"
 <% else -%>
 #IPTABLES_SYSCTL_LOAD_LIST=".nf_conntrack .bridge-nf"
 <% end -%>
